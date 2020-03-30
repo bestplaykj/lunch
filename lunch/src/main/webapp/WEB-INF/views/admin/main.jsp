@@ -89,7 +89,7 @@
       </div>
 
       <!--logo start-->
-      <a href="/admin/main" class="logo">Nice <span class="lite">Admin</span></a>
+      <a href="/admin/main" class="logo">Lunch <span class="lite">Admin</span></a>
       <!--logo end-->
 
       <div class="nav search-row" id="top_menu">
