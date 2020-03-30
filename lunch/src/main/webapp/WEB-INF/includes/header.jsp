@@ -10,6 +10,6 @@
 <%-- Main Header --%>
 <div class="col-md-10">
     <div class="images">
-        <%-- <img src="${contextPath}/resources/personal/img/2.jpg" alt="" width="100%;" height="150px;"/> --%>
+        <%-- <img src="${contextPath}/resources/front/img/2.jpg" alt="" width="100%;" height="150px;"/> --%>
     </div>
 </div>

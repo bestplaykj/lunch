@@ -9,16 +9,16 @@
     <title>Lunch</title>
 
     <!-- Bootstrap -->
-    <link href="${contextPath}/resources/personal/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/personal/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/personal/css/overwrite.css" rel="stylesheet">
-    <link href="${contextPath}/resources/personal/css/style.css" rel="stylesheet">
+    <link href="${contextPath}/resources/front/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/front/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/front/css/overwrite.css" rel="stylesheet">
+    <link href="${contextPath}/resources/front/css/style.css" rel="stylesheet">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="text/javascript" src="${contextPath}/resources/personal/js/fliplightbox.min.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/front/js/fliplightbox.min.js"></script>
 </head>
 
 <body>
@@ -41,7 +41,7 @@
         <%-- Main Page --%>
         <div class="col-md-10">
             <div class="images">
-                <img src="${contextPath}/resources/personal/img/mainlunch.jpg" alt="" />
+                <img src="${contextPath}/resources/front/img/mainlunch.jpg" alt="" />
             </div>
         </div>
         <%-- /Main Page --%>
