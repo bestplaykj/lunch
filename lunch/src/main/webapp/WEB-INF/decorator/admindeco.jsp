@@ -102,13 +102,13 @@
                             <span class="profile-ava">
                                 <img alt="" src="${contextPath}/resources/admin/img/avatar1_small.jpg">
                             </span>
-                            <span class="username">Jenifer Smith</span>
+                            <span class="username">${member.memberName}</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top"><a href="#"><i class="icon_profile"></i>My Profile</a></li>
-                            <li><a href="#"><i class="icon_key_alt"></i> Log Out</a></li>
+                            <li><a href="/member/signInOut/signOut?type=admin"><i class="icon_key_alt"></i>Sign Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -206,6 +206,17 @@
     <!-- container section end -->
     
     
+<script type="text/javascript">
+//session check
+$(document).ready(function(){
+    if (${empty member}) {
+        alert("로그인이 필요합니다.");
+        location.href="/member/signInOut/signInForm";
+    }
+});
+
+</script>
+
 <script>
 //knob
 $(function() {

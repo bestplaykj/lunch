@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lunch.member.mapper.MemberMapper">
+    
+    <select id="signIn" resultType="lunch.member.dto.MemberDto" parameterType="lunch.member.dto.MemberDto">
+        <![CDATA[
+            SELECT  account
+                      , pwd
+                      , account_type
+                      , member_name
+                      , email
+                      , DATE_FORMAT(registration_date, '%Y.%m.%d %H:%i:%s') AS registration_date
+               FROM  member
+             WHERE  use_yn = 'Y'
+                 AND  account = #{account}
+                 AND  pwd = #{pwd}
+        ]]>
+    </select>
+    
+</mapper>
