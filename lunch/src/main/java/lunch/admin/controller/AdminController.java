@@ -13,10 +13,9 @@ public class AdminController {
     private AdminService adminService;
     
     
-    @RequestMapping("/admin/main")
+    @RequestMapping("/admin/")
     public String startAdminMain() {
-        return "admin/main";
+        return "admin/index";
     }
-    
     
 }
