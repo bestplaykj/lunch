@@ -126,12 +126,7 @@ function signIn(){
         }
     });
     
-    
 }
-
-
-
-
 </script>
 </body>
 </html>

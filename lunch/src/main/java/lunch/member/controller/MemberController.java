@@ -70,21 +70,18 @@ public class MemberController {
     /**
      * 로그아웃
      * @param status
-     * @param type
      * @return
      */
     @RequestMapping("/member/signInOut/signOut")
-    public String memberSignOut(SessionStatus status, String type) {
+    public String memberSignOut(SessionStatus status) {
         status.setComplete();
-        
-        if ("admin".equals(type)) {
-            return "redirect:/admin/";
-            
-        } else {
-            return "redirect:/";
-        }
+        return "redirect:/member/signInOut/signInForm";
     }
     
+    /**
+     * 비밀번호 찾기 폼
+     * @return
+     */
     @RequestMapping("/member/signInOut/findPassword")
     public String findPassword() {
         return "member/findPassword";
