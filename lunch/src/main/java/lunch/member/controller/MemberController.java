@@ -127,6 +127,20 @@ public class MemberController {
         return json.toString();
     }
     
+    @ResponseBody
+    @RequestMapping("/member/myProfile/pwdCheck")
+    public String myProfilePwdCheck(MemberDto account) throws JSONException {
+        if (account == null) { return null; }
+        if (account.getAccount() == null || "".equals(account.getAccount())) { return null; }
+        if (account.getPwd() == null || "".equals(account.getPwd())) { return null; }
+        
+        JSONObject json = new JSONObject();
+        
+        json.put("result", this.memberService.myProfilePwdCheck(account));
+        
+        return json.toString();
+    }
+    
     /**
      * 비밀번호 찾기 폼
      * @return

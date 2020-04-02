@@ -25,4 +25,11 @@ public interface MemberService {
      */
     boolean registration(MemberDto member);
     
+    /**
+     * 비밀번호 변경 전 확인
+     * @param account
+     * @return
+     */
+    boolean myProfilePwdCheck(MemberDto account);
+    
 }

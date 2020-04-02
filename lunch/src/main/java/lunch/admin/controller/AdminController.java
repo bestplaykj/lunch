@@ -18,4 +18,9 @@ public class AdminController {
         return "admin/index";
     }
     
+    @RequestMapping("/admin/myProfile")
+    public String myProfile() {
+        return "admin/myProfile";
+    }
+    
 }

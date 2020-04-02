@@ -100,16 +100,13 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img alt="" src="${contextPath}/resources/admin/img/avatar1_small.jpg">
-                            </span>
                             <span class="username">${member.memberName}</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
-                            <li class="eborder-top"><a href="#"><i class="icon_profile"></i>My Profile</a></li>
-                            <li><a href="/member/signInOut/signOut?type=admin"><i class="icon_key_alt"></i>Sign Out</a></li>
+                            <li class="eborder-top"><a href="/admin/myProfile"><i class="icon_profile"></i>My Profile</a></li>
+                            <li><a href="/member/signInOut/signOut"><i class="icon_key_alt"></i>Sign Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->

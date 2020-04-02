@@ -38,6 +38,16 @@ public class MemberServiceImpl implements MemberService {
         return false;
     }
     
+    @Override
+    public boolean myProfilePwdCheck(MemberDto account) {
+        
+        //TODO
+        
+        
+        
+        return false;
+    }
+    
     
     
 }

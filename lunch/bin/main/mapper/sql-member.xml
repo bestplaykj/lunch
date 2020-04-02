@@ -9,7 +9,7 @@
                       , account_type
                       , member_name
                       , email
-                      , DATE_FORMAT(registration_date, '%Y.%m.%d %H:%i:%s') AS registration_date
+                      , DATE_FORMAT(registration_date, '%Y.%m.%d') AS registration_date
                FROM  member
              WHERE  use_yn = 'Y'
                  AND  account = #{account}
@@ -34,5 +34,6 @@
                         (#{account}, #{pwd}, #{accountType}, #{memberName}, #{email}, NOW())
         ]]>
     </insert>
+    
     
 </mapper>

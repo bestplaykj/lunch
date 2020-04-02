@@ -28,4 +28,5 @@ public interface MemberMapper {
      */
     int registration(MemberDto dto);
     
+    
 }
