@@ -14,4 +14,18 @@ public interface MemberMapper {
      */
     MemberDto signIn(MemberDto dto);
     
+    /**
+     * 아이디 중복확인
+     * @param dto
+     * @return
+     */
+    MemberDto accountValidation(MemberDto dto);
+    
+    /**
+     * 회원가입
+     * @param dto
+     * @return
+     */
+    int registration(MemberDto dto);
+    
 }

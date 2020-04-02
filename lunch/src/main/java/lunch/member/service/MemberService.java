@@ -11,5 +11,18 @@ public interface MemberService {
      */
     MemberDto signIn(MemberDto member);
     
+    /**
+     * 아이디 중복확인
+     * @param account
+     * @return
+     */
+    boolean accountValidation(MemberDto account);
+    
+    /**
+     * 회원가입
+     * @param member
+     * @return
+     */
+    boolean registration(MemberDto member);
     
 }

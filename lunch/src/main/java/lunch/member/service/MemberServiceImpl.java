@@ -13,12 +13,29 @@ public class MemberServiceImpl implements MemberService {
     private MemberMapper memberMapper;
     
     
-    /**
-     * 로그인
-     */
     @Override
     public MemberDto signIn(MemberDto member) {
         return this.memberMapper.signIn(member);
+    }
+    
+    @Override
+    public boolean accountValidation(MemberDto account) {
+        MemberDto result = this.memberMapper.accountValidation(account);
+        if (result == null) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public boolean registration(MemberDto member) {
+        int result = this.memberMapper.registration(member);
+        if (result == 1) {
+            return true;
+        }
+        
+        return false;
     }
     
     

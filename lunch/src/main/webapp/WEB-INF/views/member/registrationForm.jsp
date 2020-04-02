@@ -44,15 +44,20 @@
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
                         <form class="user">
-                            <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="account" placeholder="Account">
+                            <div class="form-group row">
+                                <div class="col-sm-10 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" id="account" placeholder="Account">
+                                </div>
+                                <div class="col-sm-2 mb-3 mb-sm-0" id="accountCheck">
+                                    <a class="small btn btn-warning btn-user btn-block"" href="javascript:;" onclick="accountValidation()">check</a>
+                                </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user password" id="password" placeholder="Password" onkeypress="passwordValidation()">
+                                    <input type="password" class="form-control form-control-user password" id="password" placeholder="Password" onkeyup="passwordValidation()">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user password" id="repassword" placeholder="Repeat Password" onkeypress="passwordValidation()">
+                                    <input type="password" class="form-control form-control-user password" id="repassword" placeholder="Repeat Password" onkeyup="passwordValidation()">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -61,7 +66,7 @@
                             <div class="form-group">
                                 <input type="email" class="form-control form-control-user" id="email" placeholder="Email Address">
                             </div>
-                            <a href="javascript:;" class="btn btn-primary btn-user btn-block" onclick="register()">Register Account</a>
+                            <a href="javascript:;" class="btn btn-primary btn-user btn-block" id="registerBtn" onclick="register()" style="visibility:hidden;">Register Account</a>
                             <hr>
                             <a href="javascript:;" class="btn btn-google btn-user btn-block"><i class="fab fa-google fa-fw"></i> Register with Google</a>
                             <a href="javascript:;" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Register with Facebook</a>
@@ -80,6 +85,9 @@
     </div><%-- container --%>
     
 <script type="text/javascript">
+var accountCheck = false;
+
+
 function valueValidation(account, password, repass, name, email) {
     if (account == null || account == "") {
         $("#account").focus();
@@ -114,11 +122,61 @@ function valueValidation(account, password, repass, name, email) {
     return true;
 }
 
+function accountValidation() {
+    var account = $("#account").val();
+    if (account == null || account == "") {
+        alert("아이디를 입력하세요.");
+        $("#account").focus();
+        return false;
+    }
+    
+    $.ajax({
+        url : "/member/signInOut/accountValidation",
+        type : "post",
+        data : {account:account},
+        dataType : "json",
+        success : function(data) {
+            if (data.result) {
+                if (confirm("사용가능합니다. 이대로 사용하시겠습니까?")) {
+                    $("#account").attr("readonly", "readonly");
+                    $("#accountCheck").empty();
+                    $("#accountCheck").append("<img src='${contextPath}/resources/sbadmin/img/check.png' style='width:40px; height:40px;'>");
+                    accountCheck = true;
+                }
+                
+            } else {
+                alert("이미 존재하는 아이디 입니다.");
+                $("#account").val("");
+            }
+        },
+        error : function(request, status, error){
+        }
+    });
+    
+}
+
 function passwordValidation() {
-    // TODO
+    var pwd = $("#password").val();
+    var repwd = $("#repassword").val();
+    
+    if (pwd != null && pwd != "" && repwd != null && repwd != "") {
+        if (pwd != repwd) {
+            $("#registerBtn").css("visibility", "hidden");
+        }
+        
+        if (pwd == repwd) {
+            $("#registerBtn").css("visibility", "visible");
+        }
+    }
+    
 }
 
 function register() {
+    if (!accountCheck) {
+        alert("아이디 중복체크를 해주세요.");
+        return false;
+    }
+    
     var account = $("#account").val();
     var password = $("#password").val();
     var repass = $("#repassword").val();
@@ -126,6 +184,25 @@ function register() {
     var email = $("#email").val();
     
     if (!valueValidation(account, password, repass, name, email)) { return false; }
+    
+    $.ajax({
+        url : "/member/signInOut/registration",
+        type : "post",
+        data : {account:account, pwd:password, memberName:name, email:email},
+        dataType : "json",
+        success : function(data) {
+            if (data.result) {
+                alert("회원가입이 완료되었습니다.");
+                location.href="/member/signInOut/signInForm";
+                
+            } else {
+                alert("회원가입에 실패했습니다.");
+                location.href="/member/signInOut/registrationForm";
+            }
+        },
+        error : function(request, status, error) {
+        }
+    });
     
 }
 </script>

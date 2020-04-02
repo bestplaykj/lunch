@@ -17,4 +17,22 @@
         ]]>
     </select>
     
+    <select id="accountValidation" resultType="lunch.member.dto.MemberDto" parameterType="lunch.member.dto.MemberDto">
+        <![CDATA[
+            SELECT  account
+               FROM  member
+             WHERE  account = #{account}
+        ]]>
+    </select>
+    
+    <insert id="registration" parameterType="lunch.member.dto.MemberDto">
+        <![CDATA[
+            INSERT
+               INTO  member
+                        (account, pwd, account_type, member_name, email, registration_date)
+           VALUES
+                        (#{account}, #{pwd}, #{accountType}, #{memberName}, #{email}, NOW())
+        ]]>
+    </insert>
+    
 </mapper>

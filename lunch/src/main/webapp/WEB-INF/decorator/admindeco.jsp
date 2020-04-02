@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -205,18 +206,20 @@
     </section>
     <!-- container section end -->
     
-    
 <script type="text/javascript">
-//session check
-$(document).ready(function(){
-    if (${empty member}) {
-        alert("로그인이 필요합니다.");
-        location.href="/member/signInOut/signInForm";
-    }
-});
-
+    //session & authority check
+    $(document).ready(function(){
+        if (${empty member}) {
+            alert("로그인이 필요합니다.");
+            location.href="/member/signInOut/signInForm";
+        }
+        
+        if (${!empty member} && ${member.accountType eq "user"}) {
+            alert("접근권한 없음.");
+            history.back();
+        }
+    });
 </script>
-
 <script>
 //knob
 $(function() {

@@ -43,10 +43,7 @@ public class MemberController {
     @ResponseBody
     @RequestMapping("/member/signInOut/signIn")
     public String memberSignIn(MemberDto member, Model model) throws JSONException {
-        
-        if (member.getAccount() == null || "".equals(member.getAccount()) || member.getPwd() == null || "".equals(member.getPwd())) {
-            return null;
-        }
+        if (member.getAccount() == null || "".equals(member.getAccount()) || member.getPwd() == null || "".equals(member.getPwd())) { return null; }
         
         JSONObject json = new JSONObject();
         
@@ -79,15 +76,6 @@ public class MemberController {
     }
     
     /**
-     * 비밀번호 찾기 폼
-     * @return
-     */
-    @RequestMapping("/member/signInOut/findPassword")
-    public String findPassword() {
-        return "member/findPassword";
-    }
-    
-    /**
      * 회원가입 폼
      */
     @RequestMapping("/member/signInOut/registrationForm")
@@ -95,7 +83,57 @@ public class MemberController {
         return "member/registrationForm";
     }
     
+    /**
+     * 아이디 중복체크
+     * @param model
+     * @param account
+     * @return
+     * @throws JSONException 
+     */
+    @ResponseBody
+    @RequestMapping("/member/signInOut/accountValidation")
+    public String accountValidation(Model model, MemberDto account) throws JSONException {
+        if (account.getAccount() == null || "".equals(account.getAccount())) { return null; }
+        
+        JSONObject json = new JSONObject();
+        
+        json.put("result", this.memberService.accountValidation(account));
+        
+        return json.toString();
+    }
     
+    /**
+     * 회원가입
+     * @param model
+     * @param member
+     * @return
+     * @throws JSONException 
+     */
+    @ResponseBody
+    @RequestMapping("/member/signInOut/registration")
+    public String registration(Model model, MemberDto member) throws JSONException {
+        if (member == null) { return null; }
+        if (member.getAccount() == null || "".equals(member.getAccount())) { return null; }
+        if (member.getPwd() == null || "".equals(member.getPwd())) { return null; }
+        if (member.getMemberName() == null || "".equals(member.getMemberName())) { return null; }
+        if (member.getEmail() == null || "".equals(member.getEmail())) { return null; }
+        
+        member.setAccountType("user");
+        
+        JSONObject json = new JSONObject();
+        
+        json.put("result", this.memberService.registration(member));
+        
+        return json.toString();
+    }
     
+    /**
+     * 비밀번호 찾기 폼
+     * @return
+     */
+    @RequestMapping("/member/signInOut/findPassword")
+    public String findPassword() {
+        return "member/findPassword";
+    }
     
 }
