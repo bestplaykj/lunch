@@ -28,5 +28,18 @@ public interface MemberMapper {
      */
     int registration(MemberDto dto);
     
+    /**
+     * 비밀번호 변경
+     * @param dto
+     * @return
+     */
+    int myProfileChangePwd(MemberDto dto);
+    
+    /**
+     * 회원탈퇴
+     * @param dto
+     * @return
+     */
+    int unregisterAccount(MemberDto dto);
     
 }

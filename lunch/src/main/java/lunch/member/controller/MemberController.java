@@ -127,6 +127,12 @@ public class MemberController {
         return json.toString();
     }
     
+    /**
+     * 비밀번호 변경 전 확인
+     * @param account
+     * @return
+     * @throws JSONException
+     */
     @ResponseBody
     @RequestMapping("/member/myProfile/pwdCheck")
     public String myProfilePwdCheck(MemberDto account) throws JSONException {
@@ -137,6 +143,45 @@ public class MemberController {
         JSONObject json = new JSONObject();
         
         json.put("result", this.memberService.myProfilePwdCheck(account));
+        
+        return json.toString();
+    }
+    
+    /**
+     * 비밀번호 변경
+     * @param account
+     * @return
+     * @throws JSONException
+     */
+    @ResponseBody
+    @RequestMapping("/member/myProfile/changePwd")
+    public String myProfileChangePwd(MemberDto account) throws JSONException {
+        if (account == null) { return null; }
+        if (account.getAccount() == null || "".equals(account.getAccount())) { return null; }
+        if (account.getPwd() == null || "".equals(account.getPwd())) { return null; }
+        
+        JSONObject json = new JSONObject();
+        
+        json.put("result", this.memberService.myProfileChangePwd(account));
+        
+        return json.toString();
+    }
+    
+    /**
+     * 회원탈퇴
+     * @param account
+     * @return
+     * @throws JSONException
+     */
+    @ResponseBody
+    @RequestMapping("/member/myProfile/unregisterAccount")
+    public String unregisterAccount(MemberDto account) throws JSONException {
+        if (account == null) { return null; }
+        if (account.getAccount() == null || "".equals(account.getAccount())) { return null; }
+        
+        JSONObject json = new JSONObject();
+        
+        json.put("result", this.memberService.unregisterAccount(account));
         
         return json.toString();
     }

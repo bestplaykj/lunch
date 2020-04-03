@@ -35,5 +35,21 @@
         ]]>
     </insert>
     
+    <update id="myProfileChangePwd" parameterType="lunch.member.dto.MemberDto">
+        <![CDATA[
+            UPDATE  member
+                  SET  pwd = #{pwd}
+             WHERE  account = #{account}
+        ]]>
+    </update>
+    
+    <update id="unregisterAccount" parameterType="lunch.member.dto.MemberDto">
+        <![CDATA[
+            UPDATE  member
+                  SET  use_yn = 'N'
+             WHERE  account = #{account}
+        ]]>
+    </update>
+    
     
 </mapper>

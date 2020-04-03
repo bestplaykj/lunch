@@ -32,4 +32,18 @@ public interface MemberService {
      */
     boolean myProfilePwdCheck(MemberDto account);
     
+    /**
+     * 비밀번호 변경
+     * @param account
+     * @return
+     */
+    boolean myProfileChangePwd(MemberDto account);
+    
+    /**
+     * 회원탈퇴
+     * @param account
+     * @return
+     */
+    boolean unregisterAccount(MemberDto account);
+    
 }

@@ -21,33 +21,32 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public boolean accountValidation(MemberDto account) {
         MemberDto result = this.memberMapper.accountValidation(account);
-        if (result == null) {
-            return true;
-        }
-        
-        return false;
+        return result == null ? true : false;
     }
     
     @Override
     public boolean registration(MemberDto member) {
         int result = this.memberMapper.registration(member);
-        if (result == 1) {
-            return true;
-        }
-        
-        return false;
+        return result == 1 ? true : false;
     }
     
     @Override
     public boolean myProfilePwdCheck(MemberDto account) {
-        
-        //TODO
-        
-        
-        
-        return false;
+        MemberDto result = this.memberMapper.signIn(account);
+        return result != null ? true : false;
     }
     
+    @Override
+    public boolean myProfileChangePwd(MemberDto account) {
+        int result = this.memberMapper.myProfileChangePwd(account);
+        return result == 1 ? true : false;
+    }
+    
+    @Override
+    public boolean unregisterAccount(MemberDto account) {
+        int result = this.memberMapper.unregisterAccount(account);
+        return result == 1 ? true : false;
+    }
     
     
 }
