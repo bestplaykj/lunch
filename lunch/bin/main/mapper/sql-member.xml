@@ -29,9 +29,9 @@
         <![CDATA[
             INSERT
                INTO  member
-                        (account, pwd, account_type, member_name, email, registration_date)
+                        (account, pwd, member_name, email, registration_date)
            VALUES
-                        (#{account}, #{pwd}, #{accountType}, #{memberName}, #{email}, NOW())
+                        (#{account}, #{pwd}, #{memberName}, #{email}, NOW())
         ]]>
     </insert>
     
@@ -47,6 +47,7 @@
         <![CDATA[
             UPDATE  member
                   SET  use_yn = 'N'
+                 AND  unregistration_date = NOW()
              WHERE  account = #{account}
         ]]>
     </update>

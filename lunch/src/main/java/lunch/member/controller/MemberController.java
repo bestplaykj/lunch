@@ -118,8 +118,6 @@ public class MemberController {
         if (member.getMemberName() == null || "".equals(member.getMemberName())) { return null; }
         if (member.getEmail() == null || "".equals(member.getEmail())) { return null; }
         
-        member.setAccountType("user");
-        
         JSONObject json = new JSONObject();
         
         json.put("result", this.memberService.registration(member));
