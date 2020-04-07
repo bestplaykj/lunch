@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/admin/css/owl.carousel.css" type="text/css">
     <link href="${contextPath}/resources/admin/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="${contextPath}/resources/admin/css/fullcalendar.css">
+    <link href="${contextPath}/resources/admin/css/fullcalendar.css" rel="stylesheet">
     <link href="${contextPath}/resources/admin/css/widgets.css" rel="stylesheet">
     <link href="${contextPath}/resources/admin/css/style.css" rel="stylesheet">
     <link href="${contextPath}/resources/admin/css/style-responsive.css" rel="stylesheet" />
@@ -93,7 +93,7 @@
                 <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
             </div>
             <!--logo start-->
-            <a href="/admin/main" class="logo">-- <span class="lite">admin</span></a>
+            <a href="/admin/" class="logo">-- <span class="lite">admin</span></a>
             <!--logo end-->
     
             <div class="top-nav notification-row">
@@ -102,13 +102,13 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="username">${member.memberName}</span>
+                            <span class="username">${member.memberName} 님</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
-                            <li class="eborder-top"><a href="/admin/myProfile"><i class="icon_profile"></i>My Profile</a></li>
-                            <li><a href="/member/signInOut/signOut"><i class="icon_key_alt"></i>Sign Out</a></li>
+                            <li class="eborder-top"><a href="/admin/myProfile"><i class="icon_profile"></i>내 정보</a></li>
+                            <li><a href="/member/signInOut/signOut"><i class="icon_key_alt"></i>로그아웃</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -182,12 +182,12 @@
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_table"></i>
-                            <span>Lists</span>
+                            <span>회원정보</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="/admin/getAdminMemberList">Admin List</a></li>
-                            <li><a class="" href="/admin/getUserMemberList">Customer List</a></li>
+                            <li><a class="" href="/admin/getAdminMemberList">관리자 리스트</a></li>
+                            <li><a class="" href="/admin/getUserMemberList">일반회원 리스트</a></li>
                         </ul>
                     </li>
                 </c:if>

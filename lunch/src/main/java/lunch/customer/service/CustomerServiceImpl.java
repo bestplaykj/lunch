@@ -6,6 +6,10 @@ import org.springframework.stereotype.Service;
 import lunch.customer.mapper.CustomerMapper;
 import lunch.member.dto.MemberDto;
 
+/**
+ * 일반회원 비지니스 service
+ * @author bestplaykj
+ */
 @Service
 public class CustomerServiceImpl implements CustomerService {
     
@@ -29,6 +33,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public boolean updatePwd(MemberDto account) {
         int result = this.customerMapper.updatePwd(account);
+        return result == 1 ? true : false;
+    }
+    
+    @Override
+    public boolean unregisterAccount(MemberDto account) {
+        int result = this.customerMapper.unregisterAccount(account);
         return result == 1 ? true : false;
     }
     

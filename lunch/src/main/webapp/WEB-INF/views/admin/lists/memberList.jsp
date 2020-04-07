@@ -6,16 +6,19 @@
     <div class="row">
         <div class="col-lg-12">
             <section class="panel">
-                <header class="panel-heading">${account} List</header>
+                <header class="panel-heading">
+                    <c:if test="${account eq 'admin'}">관리자 리스트</c:if>
+                    <c:if test="${account eq 'customer'}">일반회원 리스트</c:if>
+                </header>
                 <table class="table table-striped table-advance table-hover">
                     <tbody>
                         <tr>
-                            <th><i class="icon_key_alt"></i> Account</th>
-                            <th><i class="icon_info_alt"></i> Type</th>
-                            <th><i class="icon_profile"></i> Full Name</th>
-                            <th><i class="icon_mail_alt"></i> Email</th>
-                            <th><i class="icon_calendar"></i> Registration Date</th>
-                            <th><i class="icon_cogs"></i> Status</th>
+                            <th><i class="icon_key_alt"></i> 아이디</th>
+                            <th><i class="icon_info_alt"></i> 회원분류</th>
+                            <th><i class="icon_profile"></i> 이름</th>
+                            <th><i class="icon_mail_alt"></i> 이메일</th>
+                            <th><i class="icon_calendar"></i> 가입일</th>
+                            <th><i class="icon_cogs"></i> 상태</th>
                         </tr>
                 <c:choose>
                     <c:when test="${!empty list}">
@@ -40,7 +43,7 @@
                     </c:when>
                     <c:otherwise>
                         <tr>
-                            <td colspan="6">No Data</td>
+                            <td colspan="6">리스트가 없습니다.</td>
                         </tr>
                     </c:otherwise>
                 </c:choose>
@@ -60,8 +63,8 @@
                         <a class="btn btn-muted" href="javascript:;">${pages}</a>
                         </c:if>
                         <c:if test="${paging.currPage ne pages}">
-                            <c:if test="${account eq 'Admin'}"><a class="btn btn-primary" href="/admin/getAdminMemberList?currPage=${pages}" >${pages}</a></c:if>
-                            <c:if test="${account eq 'Customer'}"><a class="btn btn-primary" href="/admin/getUserMemberList?currPage=${pages}" >${pages}</a></c:if>
+                            <c:if test="${account eq 'admin'}"><a class="btn btn-primary" href="/admin/getAdminMemberList?currPage=${pages}" >${pages}</a></c:if>
+                            <c:if test="${account eq 'customer'}"><a class="btn btn-primary" href="/admin/getUserMemberList?currPage=${pages}" >${pages}</a></c:if>
                         </c:if>
                     </c:forEach>
                 </c:when>

@@ -118,7 +118,7 @@ public class AdminController {
             }
         }
         
-        model.addAttribute("account", "Admin");
+        model.addAttribute("account", "admin");
         model.addAttribute("list", this.adminService.getAllMemberList(param));
         model.addAttribute("paging", this.adminService.getAllMemberListCount(param, paging));
         return "admin/lists/memberList";
@@ -142,7 +142,7 @@ public class AdminController {
             }
         }
         
-        model.addAttribute("account", "Customer");
+        model.addAttribute("account", "customer");
         model.addAttribute("list", this.adminService.getAllMemberList(param));
         model.addAttribute("paging", this.adminService.getAllMemberListCount(param, paging));
         return "admin/lists/memberList";

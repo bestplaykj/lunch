@@ -2,6 +2,10 @@ package lunch.customer.service;
 
 import lunch.member.dto.MemberDto;
 
+/**
+ * 일반회원 비지니스 service interface
+ * @author bestplaykj
+ */
 public interface CustomerService {
     
     /**
@@ -17,5 +21,12 @@ public interface CustomerService {
      * @return
      */
     boolean updatePwd(MemberDto account);
+    
+    /**
+     * 회원 탈퇴
+     * @param account
+     * @return
+     */
+    boolean unregisterAccount(MemberDto account);
     
 }

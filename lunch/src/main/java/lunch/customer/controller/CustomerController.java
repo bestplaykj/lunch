@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lunch.customer.service.CustomerService;
 import lunch.member.dto.MemberDto;
 
+/**
+ * 일반회원 controller
+ * @author bestplaykj
+ */
 @Controller
 public class CustomerController {
     
@@ -62,6 +66,25 @@ public class CustomerController {
         JSONObject json = new JSONObject();
         
         json.put("result", this.customerService.updatePwd(account));
+        
+        return json.toString();
+    }
+    
+    /**
+     * 회원 탈퇴
+     * @param account
+     * @return
+     * @throws JSONException
+     */
+    @ResponseBody
+    @RequestMapping("/customer/myProfile/unregisterAccount")
+    public String unregisterAccount(MemberDto account) throws JSONException {
+        if (account == null) { return null; }
+        if (account.getAccount() == null || "".equals(account.getAccount())) { return null; }
+        
+        JSONObject json = new JSONObject();
+        
+        json.put("result", this.customerService.unregisterAccount(account));
         
         return json.toString();
     }

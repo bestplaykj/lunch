@@ -57,18 +57,18 @@
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="username">
                                     <c:if test="${empty member}">GUEST</c:if>
-                                    <c:if test="${!empty member}">${member.memberName}</c:if>
+                                    <c:if test="${!empty member}">${member.memberName} 님</c:if>
                                 </span>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu extended logout">
                                 <div class="log-arrow-up"></div>
                             <c:if test="${!empty member}">
-                                <li class="eborder-top"><a href="/customer/myProfile"><i class="icon_profile"></i>My Profile</a></li>
-                                <li><a href="/member/signInOut/signOut"><i class="icon_key_alt"></i>Sign Out</a></li>
+                                <li class="eborder-top"><a href="/customer/myProfile"><i class="icon_profile"></i>내 정보</a></li>
+                                <li><a href="/member/signInOut/signOut"><i class="icon_key_alt"></i>로그아웃</a></li>
                             </c:if>
                             <c:if test="${empty member}">
-                                <li><a href="/member/signInOut/signInForm"><i class="icon_key_alt"></i>Sign In</a></li>
+                                <li><a href="/member/signInOut/signInForm"><i class="icon_key_alt"></i>로그인</a></li>
                             </c:if>
                             </ul>
                         </li>
@@ -96,11 +96,10 @@
                     <span class="icon-bar"></span>
                     </button>
                     <ul class="nav nav-pills nav-stacked">
-                        <li role="presentation"><a href="/">Home</a></li>
-                        <li role="presentation"><a href="/">About</a></li>
-                        <li role="presentation"><a href="/">Graphics</a></li>
-                        <li role="presentation"><a href="/">Experience</a></li>
-                        <li role="presentation"><a href="/">Contact</a></li>
+                        <li role="presentation"><a href="/">about</a></li>
+                        <li role="presentation"><a href="/">menu</a></li>
+                        <li role="presentation"><a href="/">D.I.Y</a></li>
+                        <li role="presentation"><a href="/">contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -117,7 +116,7 @@
     <%-- Footer --%>
     <div class="row">
         <div class="text-center">
-            <br>&copy; All Right Reserved Designed by <a href="#">BESTPLAYKJ</a><br><br>
+            <br>&copy; All Right Reserved Designed by <a href="javascript:;">BESTPLAYKJ</a><br><br>
         </div>
     </div>
     

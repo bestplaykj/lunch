@@ -5,7 +5,7 @@
     
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="page-header"><i class="icon_profile"></i> Profile</h3>
+            <h3 class="page-header"><i class="icon_profile"></i> 상세정보</h3>
         </div>
     </div>
     
@@ -29,13 +29,26 @@
                             <span><i class="icon_calendar"></i>${profile.registrationDate}</span>
                         </h6>
                     </div>
-                <c:if test="${profile.accountType eq 'customer'}">
-                    <div class="col-lg-2 col-sm-6 follow-info weather-category" id="makeAdmin" onclick="makeAdmin('${profile.account}')" >
+                <c:if test="${profile.accountType eq 'admin'}">
+                    <div class="col-lg-2 col-sm-6 follow-info weather-category" id="makeCustomer" onclick="makeCustomer('${profile.account}')" >
                         <ul>
-                            <li class="active"><i class="icon_info_alt"></i><br>Change "Account Type"<br>to "Administrator"</li>
+                            <li class="active"><i class="icon_info_alt"><br></i>일반회원으로 변경하기</li>
                         </ul>
                     </div>
                 </c:if>
+                <c:if test="${profile.accountType eq 'customer'}">
+                    <div class="col-lg-2 col-sm-6 follow-info weather-category" id="makeAdmin" onclick="makeAdmin('${profile.account}')" >
+                        <ul>
+                            <li class="active"><i class="icon_info_alt"><br></i>관리자로 변경하기</li>
+                        </ul>
+                    </div>
+                </c:if>
+                    <div class="col-sm-1"></div>
+                    <div class="col-lg-2 col-sm-6 follow-info weather-category" id="forcedUnregister" onclick="forcedUnregister('${profile.account}')" >
+                        <ul>
+                            <li class="active"><i class="icon_error-triangle_alt"><br></i>강제추방</li>
+                        </ul>
+                    </div>
                 </div>
             </div><%-- profile-widget profile-widget-info --%>
         </div>
@@ -48,10 +61,10 @@
                 <header class="panel-heading tab-bg-info">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                            <a data-toggle="tab" href="#recent-activity">History</a>
+                            <a data-toggle="tab" href="#recent-activity">주문내역</a>
                         </li>
                         <li>
-                            <a data-toggle="tab" href="#profile">Profile</a>
+                            <a data-toggle="tab" href="#profile">정보</a>
                         </li>
                     </ul>
                 </header>
@@ -90,39 +103,42 @@
                                 <div class="panel-body bio-graph-info">
                                     <div class="row">
                                         <div class="bio-row">
-                                            <c:if test="${profile.useYn eq 'Y' }"><p><span>Status</span>: <span style="color:blue;">${profile.useYn}</span></p></c:if>
-                                            <c:if test="${profile.useYn eq 'N' }"><p><span>Status</span>: <span style="color:red;">${profile.useYn}</span></p></c:if>
+                                            <c:if test="${profile.useYn eq 'Y' }"><p><span>상태</span>: <span style="color:blue;">사용중</span></p></c:if>
+                                            <c:if test="${profile.useYn eq 'N' }"><p><span>상태</span>: <span style="color:red;">사용중지</span></p></c:if>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="bio-row">
-                                            <p><span>Account</span>: ${profile.account}</p>
+                                            <p><span>아이디</span>: ${profile.account}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="bio-row">
-                                            <p><span>Account Type</span>: ${profile.accountType}</p>
+                                            <p><span>회원분류</span>: 
+                                                <c:if test="${profile.accountType eq 'admin'}">관리자</c:if>
+                                                <c:if test="${profile.accountType eq 'customer'}">일반회원</c:if>
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="bio-row">
-                                            <p><span>Name</span>: ${profile.memberName}</p>
+                                            <p><span>이름</span>: ${profile.memberName}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="bio-row">
-                                            <p><span>email</span>: ${profile.email}</p>
+                                            <p><span>이메일</span>: ${profile.email}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="bio-row">
-                                            <p><span>Enroll</span>: ${profile.registrationDate}</p>
+                                            <p><span>가입일</span>: ${profile.registrationDate}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="bio-row">
-                                            <c:if test="${profile.useYn eq 'Y'}"><p><span>Withdraw</span>: -</p></c:if>
-                                            <c:if test="${profile.useYn eq 'N'}"><p><span>Withdraw</span>: <span style="color:red;">${profile.unregistrationDate}</span></p></c:if>
+                                            <c:if test="${profile.useYn eq 'Y'}"><p><span>탈퇴일</span >: -</p></c:if>
+                                            <c:if test="${profile.useYn eq 'N'}"><p><span>탈퇴일</span>: <span style="color:red;">${profile.unregistrationDate}</span></p></c:if>
                                         </div>
                                     </div>
                                 </div>
@@ -144,6 +160,8 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $("#makeAdmin").hover().css("cursor", "pointer");
+    $("#makeCustomer").hover().css("cursor", "pointer");
+    $("#forcedUnregister").hover().css("cursor", "pointer");
 });
 
 function makeAdmin(account) {
@@ -168,6 +186,14 @@ function makeAdmin(account) {
     }).fail(function(request, status, error) {
         
     });
+}
+
+function makeCustomer(account) {
+    
+}
+
+function forcedUnregister(account) {
+    
 }
 </script>
 </body>

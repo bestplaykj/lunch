@@ -29,7 +29,7 @@
         <![CDATA[
             UPDATE  member
                   SET  use_yn = 'N'
-                       ,  unregistration_date = NOW()
+                      ,  unregistration_date = NOW()
              WHERE  account = #{account}
         ]]>
     </update>

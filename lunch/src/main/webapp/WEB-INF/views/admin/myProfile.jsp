@@ -21,42 +21,42 @@
                             <form class="form-horizontal">
                                 <!-- account -->
                                 <div class="form-group">
-                                    <label class="control-label col-lg-2" for="account">Account</label>
+                                    <label class="control-label col-lg-2" for="account">아이디</label>
                                     <div class="col-lg-10">
                                         <input type="text" class="form-control" id="account" readonly="readonly" value="${member.account}">
                                     </div>
                                 </div>
                                 <!-- password -->
                                 <div class="form-group">
-                                    <label class="control-label col-lg-2" for="password">Password</label>
+                                    <label class="control-label col-lg-2" for="password">비밀번호</label>
                                     <div class="col-lg-10">
-                                        <button type="button" class="btn btn-primary" onclick="changePwd('${member.account}')">change password</button>
+                                        <button type="button" class="btn btn-primary" onclick="changePwd('${member.account}')">비밀번호 변경</button>
                                     </div>
                                 </div>
                                 <!-- accountType -->
                                 <div class="form-group">
-                                    <label class="control-label col-lg-2" for="accountType">Account Type</label>
+                                    <label class="control-label col-lg-2" for="accountType">회원분류</label>
                                     <div class="col-lg-10">
                                         <input type="text" class="form-control" id="accountType" readonly="readonly" value="${member.accountType}">
                                     </div>
                                 </div>
                                 <!-- name -->
                                 <div class="form-group">
-                                    <label class="control-label col-lg-2" for="name">Name</label>
+                                    <label class="control-label col-lg-2" for="name">이름</label>
                                     <div class="col-lg-10">
                                         <input type="text" class="form-control" id="name" readonly="readonly" value="${member.memberName}">
                                     </div>
                                 </div>
                                 <!-- email -->
                                 <div class="form-group">
-                                    <label class="control-label col-lg-2" for="email">email</label>
+                                    <label class="control-label col-lg-2" for="email">이메일</label>
                                     <div class="col-lg-10">
                                         <input type="text" class="form-control" id="email" readonly="readonly" value="${member.email}">
                                     </div>
                                 </div>
                                 <!-- registration date -->
                                 <div class="form-group">
-                                    <label class="control-label col-lg-2" for="registrationDate">Registration Date</label>
+                                    <label class="control-label col-lg-2" for="registrationDate">가입일</label>
                                     <div class="col-lg-10">
                                         <input type="text" class="form-control" id="registrationDate" readonly="readonly" value="${member.registrationDate}">
                                     </div>
@@ -65,7 +65,7 @@
                                 <div class="form-group">
                                     <!-- Buttons -->
                                     <div class="col-lg-offset-2 col-lg-9">
-                                        <button type="button" class="btn btn-danger" onclick="dropOut()">drop out</button>
+                                        <button type="button" class="btn btn-danger" onclick="unregister('${member.account}')">아이디 삭제</button>
                                     </div>
                                 </div>
                             </form>
@@ -123,13 +123,12 @@ function updatePwd(account, newPwd) {
     });
 }
 
-function dropOut() {
+function unregister(account) {
     if (!confirm("정말로 탈퇴하시겠습니까?")) { return false; }
     
     var pwd = prompt("비밀번호를 입력하세요.");
     if (pwd == null || pwd == "") { return false; }
     
-    var account = "${member.account}";
     $.ajax({
         url : "/admin/myProfile/pwdCheck",
         type : "post",

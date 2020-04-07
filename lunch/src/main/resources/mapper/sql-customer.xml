@@ -25,5 +25,14 @@
         ]]>
     </update>
     
+    <update id="unregisterAccount" parameterType="lunch.member.dto.MemberDto">
+        <![CDATA[
+            UPDATE  member
+                  SET  use_yn = 'N'
+                      ,  unregistration_date = NOW()
+             WHERE  account = #{account}
+        ]]>
+    </update>
+    
     
 </mapper>
