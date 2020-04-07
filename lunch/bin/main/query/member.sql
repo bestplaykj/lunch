@@ -25,3 +25,49 @@ INSERT INTO member
 VALUES
 ('ejfrm0802', '1q2w3e4r', 'KIM, Seongyong', 'ejfrm0802@crewmate.co.kr', NOW())
 
+
+--
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test01', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test02', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test03', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test04', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test05', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test06', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test07', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test08', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test09', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test10', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test11', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test12', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test13', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test14', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test15', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test16', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test17', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test18', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test19', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test20', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test21', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test22', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test23', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test24', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test25', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test26', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test27', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test28', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test29', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test30', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test31', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test32', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test33', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test34', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test35', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test36', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test37', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test38', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+INSERT INTO member (account, pwd, member_name, email, registration_date) VALUES ('test39', '1q2w3e4r', 'TESTER, Test', 'test@test.com', NOW());
+--
+
+
+
+
