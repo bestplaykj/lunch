@@ -80,27 +80,28 @@
 <script type="text/javascript">
 function changePwd() {
     var account = "${member.account}";
+    
     var pwd = prompt("현재 비밀번호를 입력하세요");
-    if (pwd == null || pwd == "") {
-        return false;
-    }
+    if (pwd == null || pwd == "") { return false; }
     
     $.ajax({
         url : "/member/myProfile/pwdCheck",
         type : "post",
         data : {account:account, pwd:pwd},
         dataType : "json"
+        
     }).done(function(data) {
         if (data.result) {
             var newPwd = prompt("새로운 비밀번호를 입력하세요");
-            if (newPwd == null || newPwd == "") {
-                return false;
-            }
+            if (newPwd == null || newPwd == "") { return false; }
+            
             renewalPwd(newPwd);
+            
         } else {
             alert("비밀번호가 틀렸습니다.");
             return false;
         }
+        
     }).fail(function(request, status, error) {
     });
 }
@@ -113,42 +114,44 @@ function renewalPwd(newPwd) {
         type : "post",
         data : {account:account, pwd:newPwd},
         dataType : "json"
+        
     }).done(function(data) {
         if (data.result) {
             alert("비밀번호가 변경되었습니다.");
+            
         } else {
             alert("비밀번호 변경에 실패했습니다.");
         }
+        
     }).fail(function(request, status, error) {
     });
 }
 
 function dropOut() {
-    if (confirm("정말로 탈퇴하시겠습니까?")) {
-        var pwd = prompt("비밀번호를 입력하세요.");
-        if (pwd == null || pwd == "") {
+    if (!confirm("정말로 탈퇴하시겠습니까?")) { return false; }
+    
+    var pwd = prompt("비밀번호를 입력하세요.");
+    if (pwd == null || pwd == "") { return false; }
+    
+    var account = "${member.account}";
+    $.ajax({
+        url : "/member/myProfile/pwdCheck",
+        type : "post",
+        data : {account:account, pwd:pwd},
+        dataType : "json"
+        
+    }).done(function(data) {
+        if (data.result) {
+            unregisterAccount(account);
+            
+        } else {
+            alert("비밀번호가 틀렸습니다.");
             return false;
         }
         
-        var account = "${member.account}";
-        $.ajax({
-            url : "/member/myProfile/pwdCheck",
-            type : "post",
-            data : {account:account, pwd:pwd},
-            dataType : "json"
-        }).done(function(data) {
-            if (data.result) {
-                unregisterAccount(account);
-            } else {
-                alert("비밀번호가 틀렸습니다.");
-                return false;
-            }
-        }).fail(function(request, status, error) {
-        });
-        
-    } else {
-        return false;
-    }
+    }).fail(function(request, status, error) {
+    });
+    
 }
 
 function unregisterAccount(account) {
@@ -157,14 +160,17 @@ function unregisterAccount(account) {
         type : "post",
         data : {account:account},
         dataType : "json"
+        
     }).done(function(data) {
         if (data.result) {
             alert("凸");
             location.href="/member/signInOut/signOut";
+            
         } else {
             alert("회원탈퇴에 실패했습니다.");
             return false;
         }
+        
     }).fail(function(request, status, error) {
     });
 }

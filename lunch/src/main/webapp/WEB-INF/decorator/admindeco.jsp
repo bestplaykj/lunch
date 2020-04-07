@@ -122,70 +122,73 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a class="" href="index.html">
+                        <a class="" href="/admin/">
                             <i class="icon_house_alt"></i>
-                            <span>Dashboard</span>
+                            <span>Overview</span>
                         </a>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_document_alt"></i>
-                            <span>Forms</span>
+                            <span>category1</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="form_component.html">Form Elements</a></li>
-                            <li><a class="" href="form_validation.html">Form Validation</a></li>
+                            <li><a class="" href="javascript:;">category1-1</a></li>
+                            <li><a class="" href="javascript:;">category1-2</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_desktop"></i>
-                            <span>UI Fitures</span>
+                            <span>category2</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="general.html">Elements</a></li>
-                            <li><a class="" href="buttons.html">Buttons</a></li>
-                            <li><a class="" href="grids.html">Grids</a></li>
+                            <li><a class="" href="javascript:;">category2-1</a></li>
+                            <li><a class="" href="javascript:;">category2-2</a></li>
+                            <li><a class="" href="javascript:;">category2-3</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="" href="widgets.html">
+                        <a class="" href="javascript:;">
                             <i class="icon_genius"></i>
-                            <span>Widgets</span>
+                            <span>category3</span>
                         </a>
                     </li>
                     <li>
-                        <a class="" href="chart-chartjs.html">
+                        <a class="" href="javascript:;">
                             <i class="icon_piechart"></i>
-                            <span>Charts</span>
+                            <span>category4</span>
                         </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon_table"></i>
-                            <span>Tables</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="basic_table.html">Basic Table</a></li>
-                        </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_documents_alt"></i>
-                            <span>Pages</span>
+                            <span>category5</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="profile.html">Profile</a></li>
-                            <li><a class="" href="login.html"><span>Login Page</span></a></li>
-                            <li><a class="" href="contact.html"><span>Contact Page</span></a></li>
-                            <li><a class="" href="blank.html">Blank Page</a></li>
-                            <li><a class="" href="404.html">404 Error</a></li>
+                            <li><a class="" href="javascript:;">category5-1</a></li>
+                            <li><a class="" href="javascript:;">category5-2</a></li>
+                            <li><a class="" href="javascript:;">category5-3</a></li>
+                            <li><a class="" href="javascript:;">category5-4</a></li>
+                            <li><a class="" href="javascript:;">category5-5</a></li>
                         </ul>
                     </li>
+                <c:if test="${member.account eq 'admin'}">
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="icon_table"></i>
+                            <span>Lists</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="/admin/getAdminMemberList">Admin List</a></li>
+                            <li><a class="" href="/admin/getUserMemberList">User List</a></li>
+                        </ul>
+                    </li>
+                </c:if>
                 </ul>
                 <!-- sidebar menu end-->
           </div>

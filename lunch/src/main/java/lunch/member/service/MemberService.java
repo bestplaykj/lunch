@@ -1,5 +1,8 @@
 package lunch.member.service;
 
+import java.util.List;
+
+import lunch.common.dto.Paging;
 import lunch.member.dto.MemberDto;
 
 public interface MemberService {
@@ -45,5 +48,33 @@ public interface MemberService {
      * @return
      */
     boolean unregisterAccount(MemberDto account);
+    
+    /**
+     * 전체회원 정보보기
+     * @param param
+     * @return
+     */
+    List<MemberDto> getAllMemberList(MemberDto param);
+    
+    /**
+     * 전체회원 정보보기 count
+     * @param param
+     * @return
+     */
+    Paging getAllMemberListCount(MemberDto param, Paging paging);
+    
+    /**
+     * 회원 정보보기
+     * @param account
+     * @return
+     */
+    MemberDto getMemberProfile(MemberDto account);
+    
+    /**
+     * 계정 권한 관리자로 변경
+     * @param user
+     * @return
+     */
+    boolean changeAccountType(MemberDto user);
     
 }

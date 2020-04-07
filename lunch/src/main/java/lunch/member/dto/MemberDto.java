@@ -21,4 +21,13 @@ public class MemberDto {
     
     private String useYn;
     
+    
+    private String strDate;
+    
+    private String endDate;
+    
+    private Integer offset;
+    
+    private Integer limit;
+    
 }

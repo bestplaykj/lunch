@@ -3,9 +3,7 @@
 <body>
     
     <div class="row">
-        <div class="col-md-4 text-center"><span>AA</span></div>
-        <div class="col-md-4 text-center"><span>BB</span></div>
-        <div class="col-md-4 text-center"><span>CC</span></div>
+        <img src="${contextPath}/resources/admin/img/747-8i.jpg" style="width:100%;">
     </div>
     
 </body>
