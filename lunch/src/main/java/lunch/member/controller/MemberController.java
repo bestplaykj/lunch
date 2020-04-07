@@ -14,7 +14,8 @@ import lunch.member.dto.MemberDto;
 import lunch.member.service.MemberService;
 
 /**
- * 회원 컨트롤러
+ * 회원용 공통 controller
+ * Admin / Customer 모두 일괄 적용
  * @author bestplaykj
  */
 @Controller
@@ -53,7 +54,7 @@ public class MemberController {
             return json.toString();
         }
         
-        json.put("result", "userIdentified");
+        json.put("result", "customerIdentified");
         if ("admin".equals(signInMember.getAccountType())) {
             json.put("result", "adminIdentified");
         }
@@ -124,70 +125,6 @@ public class MemberController {
         
         return json.toString();
     }
-    
-    /**
-     * 비밀번호 변경 전 확인
-     * @param account
-     * @return
-     * @throws JSONException
-     */
-    @ResponseBody
-    @RequestMapping("/member/myProfile/pwdCheck")
-    public String myProfilePwdCheck(MemberDto account) throws JSONException {
-        if (account == null) { return null; }
-        if (account.getAccount() == null || "".equals(account.getAccount())) { return null; }
-        if (account.getPwd() == null || "".equals(account.getPwd())) { return null; }
-        
-        JSONObject json = new JSONObject();
-        
-        json.put("result", this.memberService.myProfilePwdCheck(account));
-        
-        return json.toString();
-    }
-    
-    /**
-     * 비밀번호 변경
-     * @param account
-     * @return
-     * @throws JSONException
-     */
-    @ResponseBody
-    @RequestMapping("/member/myProfile/changePwd")
-    public String myProfileChangePwd(MemberDto account) throws JSONException {
-        if (account == null) { return null; }
-        if (account.getAccount() == null || "".equals(account.getAccount())) { return null; }
-        if (account.getPwd() == null || "".equals(account.getPwd())) { return null; }
-        
-        JSONObject json = new JSONObject();
-        
-        json.put("result", this.memberService.myProfileChangePwd(account));
-        
-        return json.toString();
-    }
-    
-    /**
-     * 회원탈퇴
-     * @param account
-     * @return
-     * @throws JSONException
-     */
-    @ResponseBody
-    @RequestMapping("/member/myProfile/unregisterAccount")
-    public String unregisterAccount(MemberDto account) throws JSONException {
-        if (account == null) { return null; }
-        if (account.getAccount() == null || "".equals(account.getAccount())) { return null; }
-        
-        JSONObject json = new JSONObject();
-        
-        json.put("result", this.memberService.unregisterAccount(account));
-        
-        return json.toString();
-    }
-    
-    
-    
-    
-    
     
     /**
      * 비밀번호 찾기 폼

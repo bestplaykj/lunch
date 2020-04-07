@@ -9,9 +9,11 @@
     <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
     <meta name="author" content="GeeksLabs">
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <link rel="shortcut icon" href="img/favicon.png">
     
-    <title>Lunch</title>
+    <title>buon giorno</title>
+    
+    <%-- favicon --%>
+    <link rel="shortcut icon" href="${contextPath}/resources/hi.gif" type="image/x-icon">
     
     <!-- Bootstrap CSS -->
     <link href="${contextPath}/resources/admin/css/bootstrap.min.css" rel="stylesheet">
@@ -91,7 +93,7 @@
                 <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
             </div>
             <!--logo start-->
-            <a href="/admin/main" class="logo">lunch <span class="lite">admin</span></a>
+            <a href="/admin/main" class="logo">-- <span class="lite">admin</span></a>
             <!--logo end-->
     
             <div class="top-nav notification-row">
@@ -185,7 +187,7 @@
                         </a>
                         <ul class="sub">
                             <li><a class="" href="/admin/getAdminMemberList">Admin List</a></li>
-                            <li><a class="" href="/admin/getUserMemberList">User List</a></li>
+                            <li><a class="" href="/admin/getUserMemberList">Customer List</a></li>
                         </ul>
                     </li>
                 </c:if>
@@ -214,7 +216,7 @@
             location.href="/member/signInOut/signInForm";
         }
         
-        if (${!empty member} && ${member.accountType eq "user"}) {
+        if (${!empty member} && ${member.accountType eq "customer"}) {
             alert("접근권한 없음.");
             history.back();
         }

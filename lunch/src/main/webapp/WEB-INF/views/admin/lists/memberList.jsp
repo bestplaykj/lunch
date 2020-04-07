@@ -61,7 +61,7 @@
                         </c:if>
                         <c:if test="${paging.currPage ne pages}">
                             <c:if test="${account eq 'Admin'}"><a class="btn btn-primary" href="/admin/getAdminMemberList?currPage=${pages}" >${pages}</a></c:if>
-                            <c:if test="${account eq 'User'}"><a class="btn btn-primary" href="/admin/getUserMemberList?currPage=${pages}" >${pages}</a></c:if>
+                            <c:if test="${account eq 'Customer'}"><a class="btn btn-primary" href="/admin/getUserMemberList?currPage=${pages}" >${pages}</a></c:if>
                         </c:if>
                     </c:forEach>
                 </c:when>

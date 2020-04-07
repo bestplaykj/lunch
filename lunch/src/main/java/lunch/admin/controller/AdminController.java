@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lunch.admin.service.AdminService;
 import lunch.common.dto.Paging;
 import lunch.member.dto.MemberDto;
-import lunch.member.service.MemberService;
 
+/**
+ * 관리자 controller
+ * @author bestplaykj
+ */
 @Controller
 public class AdminController {
     
     @Autowired
     private AdminService adminService;
-    
-    @Autowired
-    private MemberService memberService;
     
     
     /**
@@ -42,6 +42,65 @@ public class AdminController {
     }
     
     /**
+     * 비밀번호 변경 전 확인
+     * @param account
+     * @return
+     * @throws JSONException
+     */
+    @ResponseBody
+    @RequestMapping("/admin/myProfile/pwdCheck")
+    public String myProfilePwdCheck(MemberDto account) throws JSONException {
+        if (account == null) { return null; }
+        if (account.getAccount() == null || "".equals(account.getAccount())) { return null; }
+        if (account.getPwd() == null || "".equals(account.getPwd())) { return null; }
+        
+        JSONObject json = new JSONObject();
+        
+        json.put("result", this.adminService.myProfilePwdCheck(account));
+        
+        return json.toString();
+    }
+    
+    /**
+     * 비밀번호 변경
+     * @param account
+     * @return
+     * @throws JSONException
+     */
+    @ResponseBody
+    @RequestMapping("/admin/myProfile/updatePwd")
+    public String myProfileUpdatePwd(MemberDto account) throws JSONException {
+        if (account == null) { return null; }
+        if (account.getAccount() == null || "".equals(account.getAccount())) { return null; }
+        if (account.getPwd() == null || "".equals(account.getPwd())) { return null; }
+        
+        JSONObject json = new JSONObject();
+        
+        json.put("result", this.adminService.updatePwd(account));
+        
+        return json.toString();
+    }
+    
+    /**
+     * 회원탈퇴
+     * @param account
+     * @return
+     * @throws JSONException
+     */
+    @ResponseBody
+    @RequestMapping("/admin/myProfile/unregisterAccount")
+    public String unregisterAccount(MemberDto account) throws JSONException {
+        if (account == null) { return null; }
+        if (account.getAccount() == null || "".equals(account.getAccount())) { return null; }
+        
+        JSONObject json = new JSONObject();
+        
+        json.put("result", this.adminService.unregisterAccount(account));
+        
+        return json.toString();
+    }
+    
+    /**
      * 전체 관리자 정보보기
      * @param model
      * @param param
@@ -60,8 +119,8 @@ public class AdminController {
         }
         
         model.addAttribute("account", "Admin");
-        model.addAttribute("list", this.memberService.getAllMemberList(param));
-        model.addAttribute("paging", this.memberService.getAllMemberListCount(param, paging));
+        model.addAttribute("list", this.adminService.getAllMemberList(param));
+        model.addAttribute("paging", this.adminService.getAllMemberListCount(param, paging));
         return "admin/lists/memberList";
     }
     
@@ -73,7 +132,7 @@ public class AdminController {
      */
     @RequestMapping("/admin/getUserMemberList")
     public String getUserMemberList(Model model, MemberDto param, Paging paging){
-        param.setAccountType("user");
+        param.setAccountType("customer");
         
         if (paging.getCurrPage() != null && paging.getCurrPage() != 1) {
             if (param.getLimit() == null) {
@@ -83,9 +142,9 @@ public class AdminController {
             }
         }
         
-        model.addAttribute("account", "User");
-        model.addAttribute("list", this.memberService.getAllMemberList(param));
-        model.addAttribute("paging", this.memberService.getAllMemberListCount(param, paging));
+        model.addAttribute("account", "Customer");
+        model.addAttribute("list", this.adminService.getAllMemberList(param));
+        model.addAttribute("paging", this.adminService.getAllMemberListCount(param, paging));
         return "admin/lists/memberList";
     }
     
@@ -99,7 +158,7 @@ public class AdminController {
     public String getMemberProfile(Model model, MemberDto account) {
         if (account.getAccount() == null) { return "error/error"; }
         
-        MemberDto member = this.memberService.getMemberProfile(account);
+        MemberDto member = this.adminService.getMemberProfile(account);
         if (member == null) { return "error/error"; }
         
         model.addAttribute("profile", member);
@@ -119,7 +178,7 @@ public class AdminController {
         
         if (user.getAccount() == null) { json.put("result", false); }
         
-        json.put("result", this.memberService.changeAccountType(user));
+        json.put("result", this.adminService.changeAccountType(user));
         
         return json.toString();
     }

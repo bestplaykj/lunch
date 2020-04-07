@@ -9,7 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>Lunch</title>
+    <title>hello</title>
+    
+    <%-- favicon --%>
+    <link rel="shortcut icon" href="${contextPath}/resources/hi.gif" type="image/x-icon">
     
     <!-- Custom fonts for this template-->
     <link href="${contextPath}/resources/sbadmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

@@ -9,7 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>Lunch</title>
+    <title>hello</title>
+    
+    <%-- favicon --%>
+    <link rel="shortcut icon" href="${contextPath}/resources/hi.gif" type="image/x-icon">
     
     <!-- Custom fonts for this template-->
     <link href="${contextPath}/resources/sbadmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -137,12 +140,12 @@ function accountValidation() {
         dataType : "json",
         success : function(data) {
             if (data.result) {
-                if (confirm("사용가능합니다. 이대로 사용하시겠습니까?")) {
-                    $("#account").attr("readonly", "readonly");
-                    $("#accountCheck").empty();
-                    $("#accountCheck").append("<img src='${contextPath}/resources/sbadmin/img/check.png' style='width:40px; height:40px;'>");
-                    accountCheck = true;
-                }
+                if (!confirm("사용가능합니다. 이대로 사용하시겠습니까?")) { return false; }
+                
+                $("#account").attr("readonly", "readonly");
+                $("#accountCheck").empty();
+                $("#accountCheck").append("<img src='${contextPath}/resources/sbadmin/img/check.png' style='width:40px; height:40px;'>");
+                accountCheck = true;
                 
             } else {
                 alert("이미 존재하는 아이디 입니다.");

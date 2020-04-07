@@ -1,7 +1,7 @@
 CREATE TABLE member (
 account VARCHAR(100) NOT NULL COMMENT '계정',
 pwd VARCHAR(300) NOT NULL COMMENT '비밀번호',
-account_type VARCHAR(100) NOT NULL DEFAULT 'user' COMMENT '계정분류',
+account_type VARCHAR(100) NOT NULL DEFAULT 'customer' COMMENT '계정분류',
 member_name VARCHAR(100) NOT NULL COMMENT '이름',
 email VARCHAR(300) NOT NULL COMMENT '이메일',
 registration_date DATETIME NOT NULL COMMENT '가입일자',

@@ -18,7 +18,7 @@
                         <h4>${profile.memberName}</h4>
                         <h6>
                             <c:if test="${profile.accountType eq 'admin'}">Administrator</c:if>
-                            <c:if test="${profile.accountType eq 'user'}">Customer</c:if>
+                            <c:if test="${profile.accountType eq 'customer'}">Customer</c:if>
                         </h6>
                     </div>
                     <div class="col-lg-4 col-sm-4 follow-info">
@@ -29,7 +29,7 @@
                             <span><i class="icon_calendar"></i>${profile.registrationDate}</span>
                         </h6>
                     </div>
-                <c:if test="${profile.accountType eq 'user'}">
+                <c:if test="${profile.accountType eq 'customer'}">
                     <div class="col-lg-2 col-sm-6 follow-info weather-category" id="makeAdmin" onclick="makeAdmin('${profile.account}')" >
                         <ul>
                             <li class="active"><i class="icon_info_alt"></i><br>Change "Account Type"<br>to "Administrator"</li>
@@ -121,8 +121,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="bio-row">
-                                            <c:if test="${profile.useYn eq 'Y' }"><p><span>Withdraw</span>: -</p></c:if>
-                                            <c:if test="${profile.useYn eq 'N' }"><p><span>Withdraw</span>: <span style="color:red;">${profile.unregistrationDate}</span></p></c:if>
+                                            <c:if test="${profile.useYn eq 'Y'}"><p><span>Withdraw</span>: -</p></c:if>
+                                            <c:if test="${profile.useYn eq 'N'}"><p><span>Withdraw</span>: <span style="color:red;">${profile.unregistrationDate}</span></p></c:if>
                                         </div>
                                     </div>
                                 </div>

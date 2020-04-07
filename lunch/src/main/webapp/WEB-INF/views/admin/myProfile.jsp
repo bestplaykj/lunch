@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-lg-2" for="password">Password</label>
                                     <div class="col-lg-10">
-                                        <button type="button" class="btn btn-primary" onclick="changePwd()">change password</button>
+                                        <button type="button" class="btn btn-primary" onclick="changePwd('${member.account}')">change password</button>
                                     </div>
                                 </div>
                                 <!-- accountType -->
@@ -78,14 +78,12 @@
     </div>
     
 <script type="text/javascript">
-function changePwd() {
-    var account = "${member.account}";
-    
+function changePwd(account) {
     var pwd = prompt("현재 비밀번호를 입력하세요");
     if (pwd == null || pwd == "") { return false; }
     
     $.ajax({
-        url : "/member/myProfile/pwdCheck",
+        url : "/admin/myProfile/pwdCheck",
         type : "post",
         data : {account:account, pwd:pwd},
         dataType : "json"
@@ -95,7 +93,7 @@ function changePwd() {
             var newPwd = prompt("새로운 비밀번호를 입력하세요");
             if (newPwd == null || newPwd == "") { return false; }
             
-            renewalPwd(newPwd);
+            updatePwd(account, newPwd);
             
         } else {
             alert("비밀번호가 틀렸습니다.");
@@ -106,11 +104,9 @@ function changePwd() {
     });
 }
 
-function renewalPwd(newPwd) {
-    var account = "${member.account}";
-    
+function updatePwd(account, newPwd) {
     $.ajax({
-        url : "/member/myProfile/changePwd",
+        url : "/admin/myProfile/updatePwd",
         type : "post",
         data : {account:account, pwd:newPwd},
         dataType : "json"
@@ -135,7 +131,7 @@ function dropOut() {
     
     var account = "${member.account}";
     $.ajax({
-        url : "/member/myProfile/pwdCheck",
+        url : "/admin/myProfile/pwdCheck",
         type : "post",
         data : {account:account, pwd:pwd},
         dataType : "json"
@@ -156,7 +152,7 @@ function dropOut() {
 
 function unregisterAccount(account) {
     $.ajax({
-        url : "/member/myProfile/unregisterAccount",
+        url : "/admin/myProfile/unregisterAccount",
         type : "post",
         data : {account:account},
         dataType : "json"
