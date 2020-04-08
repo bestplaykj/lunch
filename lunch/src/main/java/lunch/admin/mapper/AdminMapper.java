@@ -56,10 +56,17 @@ public interface AdminMapper {
     MemberDto getMemberProfile(MemberDto dto);
     
     /**
-     * 계정 권한 관리자로 변경
+     * 계정 권한 변경
      * @param dto
      * @return
      */
     int changeAccountType(MemberDto dto);
+    
+    /**
+     * 강제탈퇴
+     * @param dto
+     * @return
+     */
+    int forcedUnregister(MemberDto dto);
     
 }

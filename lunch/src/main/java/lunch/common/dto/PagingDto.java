@@ -7,7 +7,7 @@ import lombok.Data;
  * @author bestplaykj
  */
 @Data
-public class Paging {
+public class PagingDto {
     
     /** 전체 페이지 수 */
     private Integer totalPages;

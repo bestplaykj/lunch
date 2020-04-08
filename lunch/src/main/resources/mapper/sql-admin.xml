@@ -73,7 +73,16 @@
     <update id="changeAccountType" parameterType="lunch.member.dto.MemberDto">
         <![CDATA[
             UPDATE  member
-                  SET  account_type = 'admin'
+                  SET  account_type = #{accountType}
+             WHERE  account = #{account}
+        ]]>
+    </update>
+    
+    <update id="forcedUnregister" parameterType="lunch.member.dto.MemberDto">
+        <![CDATA[
+            UPDATE  member
+                  SET  use_yn = 'N'
+                      ,  unregistration_date = NOW()
              WHERE  account = #{account}
         ]]>
     </update>

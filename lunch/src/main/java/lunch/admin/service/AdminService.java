@@ -2,7 +2,7 @@ package lunch.admin.service;
 
 import java.util.List;
 
-import lunch.common.dto.Paging;
+import lunch.common.dto.PagingDto;
 import lunch.member.dto.MemberDto;
 
 /**
@@ -44,7 +44,7 @@ public interface AdminService {
      * @param param
      * @return
      */
-    Paging getAllMemberListCount(MemberDto param, Paging paging);
+    PagingDto getAllMemberListCount(MemberDto param, PagingDto paging);
     
     /**
      * 회원 정보보기
@@ -54,10 +54,17 @@ public interface AdminService {
     MemberDto getMemberProfile(MemberDto account);
     
     /**
-     * 계정 권한 관리자로 변경
-     * @param user
+     * 계정 권한 변경
+     * @param account
      * @return
      */
-    boolean changeAccountType(MemberDto user);
+    boolean changeAccountType(MemberDto account);
+    
+    /**
+     * 강제탈퇴
+     * @param account
+     * @return
+     */
+    boolean forcedUnregister(MemberDto account);
     
 }

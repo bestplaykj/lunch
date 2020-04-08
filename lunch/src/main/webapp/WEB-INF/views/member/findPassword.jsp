@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>hello</title>
+    <title>이경준</title>
     
     <%-- favicon --%>
     <link rel="shortcut icon" href="${contextPath}/resources/hi.gif" type="image/x-icon">

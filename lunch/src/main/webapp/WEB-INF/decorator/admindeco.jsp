@@ -10,7 +10,7 @@
     <meta name="author" content="GeeksLabs">
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     
-    <title>buon giorno</title>
+    <title>이경준</title>
     
     <%-- favicon --%>
     <link rel="shortcut icon" href="${contextPath}/resources/hi.gif" type="image/x-icon">

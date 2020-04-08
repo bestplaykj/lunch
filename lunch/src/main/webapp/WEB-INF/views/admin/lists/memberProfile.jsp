@@ -168,7 +168,7 @@ function makeAdmin(account) {
     if (!confirm("'" + account + "' 이 사용자를 관리자로 지정합니다.\r\n맞습니까?")) { return false; }
     
     $.ajax({
-        url : "/admin/changeAccountType",
+        url : "/admin/makeAdmin",
         type : "post",
         dataType : "json",
         data : {account:account}
@@ -184,16 +184,53 @@ function makeAdmin(account) {
         location.reload(true);
         
     }).fail(function(request, status, error) {
-        
     });
 }
 
 function makeCustomer(account) {
+    if (!confirm("'" + account + "' 이 사용자를 일반회원으로 지정합니다.\r\n맞습니까?")) { return false; }
     
+    $.ajax({
+        url : "/admin/makeCustomer",
+        type : "post",
+        dataType : "json",
+        data : {account:account}
+    
+    }).done(function(data){
+        if (data.result) {
+            alert("일반회원으로 지정되었습니다.");
+            
+        } else {
+            alert("응 실패");
+        }
+        
+        location.reload(true);
+        
+    }).fail(function(request, status, error) {
+    });
 }
 
 function forcedUnregister(account) {
+    if (!confirm("'" + account + "' 이 사용자를 강제탈퇴합니다.\r\n맞습니까?")) { return false; }
     
+    $.ajax({
+        url : "/admin/forcedUnregister",
+        type : "post",
+        dataType : "json",
+        data : {account:account}
+    
+    }).done(function(data){
+        if (data.result) {
+            alert("강제탈퇴완료.");
+            
+        } else {
+            alert("응 실패");
+        }
+        
+        location.reload(true);
+        
+    }).fail(function(request, status, error) {
+    });
 }
 </script>
 </body>

@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lunch.admin.mapper.AdminMapper;
-import lunch.common.dto.Paging;
+import lunch.common.dto.PagingDto;
+import lunch.common.util.Paging;
 import lunch.member.dto.MemberDto;
 
 /**
@@ -59,28 +60,11 @@ public class AdminServiceImpl implements AdminService {
     }
     
     @Override
-    public Paging getAllMemberListCount(MemberDto param, Paging paging) {
-        Paging newPaging = new Paging();
-        
+    public PagingDto getAllMemberListCount(MemberDto param, PagingDto paging) {
         int totalCount = this.adminMapper.getAllMemberListCount(param);
         int limit = param.getLimit();
         
-        int totalPages = totalCount / limit;
-        if (totalCount % limit != 0) {
-            totalPages += 1;
-        }
-        
-        newPaging.setLimit(limit);
-        newPaging.setTotalCount(totalCount);
-        newPaging.setTotalPages(totalPages);
-        
-        if (paging.getCurrPage() == null) { 
-            newPaging.setCurrPage(1);
-        } else {
-            newPaging.setCurrPage(paging.getCurrPage());
-        }
-        
-        return newPaging;
+        return new Paging().calculatePaging(totalCount, limit);
     }
     
     @Override
@@ -90,10 +74,17 @@ public class AdminServiceImpl implements AdminService {
     }
     
     @Override
-    public boolean changeAccountType(MemberDto user) {
-        int result = this.adminMapper.changeAccountType(user);
+    public boolean changeAccountType(MemberDto account) {
+        int result = this.adminMapper.changeAccountType(account);
         return result == 1 ? true : false;
     }
+    
+    @Override
+    public boolean forcedUnregister(MemberDto account) {
+        int result = this.adminMapper.forcedUnregister(account);
+        return result == 1 ? true : false;
+    }
+    
     
     
 }

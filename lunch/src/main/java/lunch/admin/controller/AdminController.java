@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lunch.admin.service.AdminService;
-import lunch.common.dto.Paging;
+import lunch.common.dto.PagingDto;
 import lunch.member.dto.MemberDto;
 
 /**
@@ -18,6 +18,9 @@ import lunch.member.dto.MemberDto;
  */
 @Controller
 public class AdminController {
+    
+    private static final String ADMIN = "admin";
+    private static final String CUSTOMER = "customer";
     
     @Autowired
     private AdminService adminService;
@@ -107,8 +110,8 @@ public class AdminController {
      * @return
      */
     @RequestMapping("/admin/getAdminMemberList")
-    public String getAdminMemberList(Model model ,MemberDto param, Paging paging) {
-        param.setAccountType("admin");
+    public String getAdminMemberList(Model model ,MemberDto param, PagingDto paging) {
+        param.setAccountType(ADMIN);
         
         if (paging.getCurrPage() != null && paging.getCurrPage() != 1) {
             if (param.getLimit() == null) {
@@ -118,7 +121,7 @@ public class AdminController {
             }
         }
         
-        model.addAttribute("account", "admin");
+        model.addAttribute("account", ADMIN);
         model.addAttribute("list", this.adminService.getAllMemberList(param));
         model.addAttribute("paging", this.adminService.getAllMemberListCount(param, paging));
         return "admin/lists/memberList";
@@ -131,8 +134,8 @@ public class AdminController {
      * @return
      */
     @RequestMapping("/admin/getUserMemberList")
-    public String getUserMemberList(Model model, MemberDto param, Paging paging){
-        param.setAccountType("customer");
+    public String getUserMemberList(Model model, MemberDto param, PagingDto paging){
+        param.setAccountType(CUSTOMER);
         
         if (paging.getCurrPage() != null && paging.getCurrPage() != 1) {
             if (param.getLimit() == null) {
@@ -142,7 +145,7 @@ public class AdminController {
             }
         }
         
-        model.addAttribute("account", "customer");
+        model.addAttribute("account", CUSTOMER);
         model.addAttribute("list", this.adminService.getAllMemberList(param));
         model.addAttribute("paging", this.adminService.getAllMemberListCount(param, paging));
         return "admin/lists/memberList";
@@ -167,18 +170,56 @@ public class AdminController {
     
     /**
      * 계정 권한 관리자로 변경
-     * @param user
+     * @param customer
      * @return
      * @throws JSONException
      */
     @ResponseBody
-    @RequestMapping("/admin/changeAccountType")
-    public String changeAccountType(MemberDto user) throws JSONException {
+    @RequestMapping("/admin/makeAdmin")
+    public String makeAdmin(MemberDto customer) throws JSONException {
         JSONObject json = new JSONObject();
         
-        if (user.getAccount() == null) { json.put("result", false); }
+        if (customer.getAccount() == null) { json.put("result", false); return json.toString();}
         
-        json.put("result", this.adminService.changeAccountType(user));
+        customer.setAccountType(ADMIN);
+        json.put("result", this.adminService.changeAccountType(customer));
+        
+        return json.toString();
+    }
+    
+    /**
+     * 계정 권한 일반회원으로 변경
+     * @param admin
+     * @return
+     * @throws JSONException
+     */
+    @ResponseBody
+    @RequestMapping("/admin/makeCustomer")
+    public String makeCustomer(MemberDto admin) throws JSONException {
+        JSONObject json = new JSONObject();
+        
+        if (admin.getAccount() == null) { json.put("result", false); return json.toString(); }
+        
+        admin.setAccountType(CUSTOMER);
+        json.put("result", this.adminService.changeAccountType(admin));
+        
+        return json.toString();
+    }
+    
+    /**
+     * 강제탈퇴
+     * @param account
+     * @return
+     * @throws JSONException
+     */
+    @ResponseBody
+    @RequestMapping("/admin/forcedUnregister")
+    public String forcedUnregister(MemberDto account) throws JSONException {
+        JSONObject json = new JSONObject();
+        
+        if (account.getAccount() == null) { json.put("result", false); return json.toString(); }
+        
+        json.put("result", this.adminService.forcedUnregister(account));
         
         return json.toString();
     }
