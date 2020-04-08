@@ -13,6 +13,7 @@ local.properties
 *.bin
 *.class
 *.lock
+.gradle/
 
 # External tool builders
 .externalToolBuilders/
