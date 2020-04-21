@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>이경준</title>
+    <title><c:if test="${empty member}">Guest</c:if><c:if test="${!empty member}">${member.memberName}</c:if></title>
     
     <%-- favicon --%>
     <link rel="shortcut icon" href="${contextPath}/resources/hi.gif" type="image/x-icon">
@@ -63,12 +63,12 @@
                             </a>
                             <ul class="dropdown-menu extended logout">
                                 <div class="log-arrow-up"></div>
+                            <c:if test="${empty member}">
+                                <li><a href="/member/signInOut/signInForm"><i class="icon_key_alt"></i>로그인</a></li>
+                            </c:if>
                             <c:if test="${!empty member}">
                                 <li class="eborder-top"><a href="/customer/myProfile"><i class="icon_profile"></i>내 정보</a></li>
                                 <li><a href="/member/signInOut/signOut"><i class="icon_key_alt"></i>로그아웃</a></li>
-                            </c:if>
-                            <c:if test="${empty member}">
-                                <li><a href="/member/signInOut/signInForm"><i class="icon_key_alt"></i>로그인</a></li>
                             </c:if>
                             </ul>
                         </li>

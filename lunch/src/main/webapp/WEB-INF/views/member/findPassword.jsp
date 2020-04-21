@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>이경준</title>
+    <title>비밀번호 찾기</title>
     
     <%-- favicon --%>
     <link rel="shortcut icon" href="${contextPath}/resources/hi.gif" type="image/x-icon">

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>이경준</title>
+    <title>회원가입</title>
     
     <%-- favicon --%>
     <link rel="shortcut icon" href="${contextPath}/resources/hi.gif" type="image/x-icon">
